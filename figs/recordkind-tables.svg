@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="640" viewBox="0 0 1000 640">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+    <marker id="arb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#F59E0B"/>
+    </marker>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="640" fill="#F8FAFC"/>
+
+  <text x="40" y="52" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#0F172A">一个名字，两张表，一次查表</text>
+  <text x="40" y="82" font-family="Noto Sans CJK SC" font-size="16" fill="#64748B">所谓「元模型层」，物理上就是这个：两张 map 加一个 enum 标签。</text>
+
+  <!-- 源码 -->
+  <rect x="40" y="112" width="470" height="92" rx="10" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#sh)"/>
+  <text x="60" y="140" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">你写的这一行</text>
+  <text x="60" y="176" font-family="Noto Sans Mono CJK SC" font-size="16" font-weight="700" fill="#0F172A">class AVX512BIi8Base : TB, PD;</text>
+
+  <!-- 查表箭头 -->
+  <path d="M275,204 V236 H260 V266" fill="none" stroke="#F59E0B" stroke-width="2.5" marker-end="url(#arb)"/>
+  <text x="286" y="232" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#B45309">只看 Classes</text>
+
+  <path d="M470,158 H720 V248" fill="none" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6 5"/>
+  <circle cx="720" cy="256" r="11" fill="#FFF1F2" stroke="#FCA5A5" stroke-width="1.5"/>
+  <path d="M714,250 L726,262 M726,250 L714,262" stroke="#E11D48" stroke-width="2"/>
+  <text x="500" y="146" font-family="Noto Sans CJK SC" font-size="15" fill="#94A3B8">Defs 这边，没有人查</text>
+
+  <!-- Classes 表 -->
+  <rect x="40" y="270" width="440" height="212" rx="12" fill="#FFFFFF" stroke="#FCD34D" stroke-width="2" filter="url(#sh)"/>
+  <text x="62" y="302" font-family="Noto Sans Mono CJK SC" font-size="16" font-weight="700" fill="#B45309">RecordMap Classes</text>
+  <text x="62" y="324" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">key: 名字　value: 一条 class 记录</text>
+  <line x1="62" y1="336" x2="458" y2="336" stroke="#F1F5F9"/>
+  <rect x="62" y="348" width="396" height="34" rx="6" fill="#FFFBEB"/>
+  <text x="76" y="371" font-family="Noto Sans Mono CJK SC" font-size="16" font-weight="700" fill="#92400E">TB</text>
+  <text x="300" y="371" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#B45309">class TB { Map OpMap }</text>
+  <rect x="62" y="390" width="396" height="34" rx="6" fill="#F8FAFC"/>
+  <text x="76" y="413" font-family="Noto Sans Mono CJK SC" font-size="16" fill="#334155">PD</text>
+  <text x="300" y="413" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#64748B">class PD { ... }</text>
+  <text x="62" y="456" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#047857">命中 → U 拿到 class 的字段 int b = 2</text>
+
+  <!-- Defs 表 -->
+  <rect x="520" y="270" width="440" height="212" rx="12" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <text x="542" y="302" font-family="Noto Sans Mono CJK SC" font-size="16" font-weight="700" fill="#334155">RecordMap Defs</text>
+  <text x="542" y="324" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">key: 名字　value: 一条 def 记录</text>
+  <line x1="542" y1="336" x2="938" y2="336" stroke="#F1F5F9"/>
+  <rect x="542" y="348" width="396" height="34" rx="6" fill="#FFF1F2"/>
+  <text x="556" y="371" font-family="Noto Sans Mono CJK SC" font-size="16" font-weight="700" fill="#9F1239">TB</text>
+  <text x="780" y="371" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#BE123C">def TB { Map }</text>
+  <rect x="542" y="390" width="396" height="34" rx="6" fill="#F8FAFC"/>
+  <text x="556" y="413" font-family="Noto Sans Mono CJK SC" font-size="16" fill="#334155">X86Insts</text>
+  <text x="780" y="413" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#64748B">def X86Insts { ... }</text>
+  <text x="542" y="456" font-family="Noto Sans CJK SC" font-size="15" fill="#94A3B8">同名的这条 def 永远看不到 —— 不是被挡住，是没人查</text>
+
+  <!-- enum -->
+  <rect x="40" y="512" width="920" height="100" rx="12" fill="#F1F5F9" stroke="#CBD5E1"/>
+  <text x="62" y="542" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">两张表上的标签，全部强制力就这么多</text>
+  <text x="62" y="572" font-family="Noto Sans Mono CJK SC" font-size="15" font-weight="700" fill="#0F172A">enum RecordKind { RK_Def, RK_AnonymousDef, RK_Class, RK_MultiClass };</text>
+  <text x="62" y="598" font-family="Noto Sans CJK SC" font-size="14" fill="#64748B">没有 ClassRecord，没有 DefRecord，class 和 def 共用一个 Record。查不到就报 Couldn't find class。</text>
+</svg>

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="580" viewBox="0 0 1000 580">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="580" fill="#F8FAFC"/>
+
+  <text x="40" y="52" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#0F172A">语义从右边那一格开始</text>
+  <text x="40" y="82" font-family="Noto Sans CJK SC" font-size="16" fill="#64748B">左边三格做的是语言层的事；右边那一格才知道什么是指令。</text>
+
+  <!-- 四层 -->
+  <rect x="40" y="150" width="200" height="112" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <text x="60" y="178" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">第 0 层</text>
+  <text x="60" y="206" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#0F172A">文本</text>
+  <text x="60" y="238" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#475569">.td 源码</text>
+
+  <rect x="280" y="150" width="200" height="112" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <text x="300" y="178" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">第 1 层</text>
+  <text x="300" y="206" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#0F172A">AST</text>
+  <text x="300" y="238" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#475569">Init 树</text>
+
+  <rect x="520" y="150" width="200" height="112" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <text x="540" y="178" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">第 2 层</text>
+  <text x="540" y="206" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#0F172A">记录图</text>
+  <text x="540" y="238" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#475569">RecordKeeper</text>
+
+  <rect x="760" y="150" width="200" height="112" rx="10" fill="#FFFBEB" stroke="#FCD34D" filter="url(#sh)"/>
+  <text x="780" y="178" font-family="Noto Sans CJK SC" font-size="13" fill="#B45309">第 3 层</text>
+  <text x="780" y="206" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#92400E">领域语义</text>
+  <text x="780" y="238" font-family="Noto Sans CJK SC" font-size="14" fill="#B45309">backend 的解释</text>
+
+  <line x1="240" y1="206" x2="272" y2="206" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="480" y1="206" x2="512" y2="206" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/>
+  <line x1="720" y1="206" x2="752" y2="206" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <!-- 分界 -->
+  <line x1="740" y1="118" x2="740" y2="392" stroke="#E11D48" stroke-width="2" stroke-dasharray="7 5"/>
+  <rect x="672" y="96" width="136" height="26" rx="6" fill="#FFF1F2" stroke="#FECDD3"/>
+  <text x="740" y="114" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="13" font-weight="700" fill="#BE123C">语义分界</text>
+
+  <!-- 括号 -->
+  <path d="M40,300 v16 H720 v-16" fill="none" stroke="#94A3B8" stroke-width="2"/>
+  <text x="380" y="342" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" font-weight="700" fill="#334155">语言层：继承、let、multiclass、!if、类型检查</text>
+  <text x="380" y="366" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="14" fill="#94A3B8">TGParser 4,846 行 + RecordKeeper，都长在这一侧</text>
+
+  <path d="M760,300 v16 H960 v-16" fill="none" stroke="#F59E0B" stroke-width="2"/>
+  <text x="860" y="342" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" font-weight="700" fill="#B45309">领域层：46 个后端</text>
+  <text x="860" y="366" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="14" fill="#B45309">只有这里知道 8 个 bit 是操作码</text>
+
+  <!-- 底部 -->
+  <rect x="40" y="404" width="920" height="140" rx="12" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <text x="62" y="436" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#0F172A">左边三格里，没有「指令」「寄存器」「诊断」这些词。</text>
+  <text x="62" y="464" font-family="Noto Sans CJK SC" font-size="15" fill="#334155">TableGen 只知道有一条记录叫 ADD，有个字段叫 Opcode，值是 8 个 bit。</text>
+  <text x="62" y="490" font-family="Noto Sans CJK SC" font-size="15" fill="#334155">「这 8 个 bit 是操作码」这句话，只活在第 3 层的生成逻辑里。</text>
+  <text x="62" y="524" font-family="Noto Sans CJK SC" font-size="14" fill="#94A3B8">所以说「TableGen 没有语义」是错的：它有语言层语义，只是不承诺任何领域含义。</text>
+</svg>

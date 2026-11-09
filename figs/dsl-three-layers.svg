@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+  <defs>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="600" fill="#F8FAFC"/>
+
+  <text x="40" y="52" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#0F172A">三层，三种改法</text>
+  <text x="40" y="82" font-family="Noto Sans CJK SC" font-size="16" fill="#64748B">分开的理由不是"干净"，是它们的变更频率差一个数量级。</text>
+
+  <!-- 层 1 -->
+  <rect x="40" y="116" width="560" height="96" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <circle cx="72" cy="152" r="15" fill="#F1F5F9"/>
+  <text x="72" y="158" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="15" font-weight="700" fill="#475569">1</text>
+  <text x="100" y="158" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#0F172A">具体语法</text>
+  <text x="204" y="158" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">怎么写</text>
+  <text x="100" y="184" font-family="Noto Sans CJK SC" font-size="14" fill="#475569">产物：EBNF / parser　·　主人：语言设计者</text>
+  <text x="100" y="204" font-family="Noto Sans CJK SC" font-size="14" fill="#94A3B8">坏了的症状：解析不了合法输入</text>
+  <rect x="500" y="130" width="84" height="26" rx="6" fill="#F1F5F9"/>
+  <text x="542" y="148" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="13" fill="#475569">一年改一次</text>
+
+  <!-- 层 2 -->
+  <rect x="40" y="232" width="560" height="96" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <circle cx="72" cy="268" r="15" fill="#F1F5F9"/>
+  <text x="72" y="274" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="15" font-weight="700" fill="#475569">2</text>
+  <text x="100" y="274" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#0F172A">抽象语法</text>
+  <text x="204" y="274" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">写成什么结构</text>
+  <text x="100" y="300" font-family="Noto Sans CJK SC" font-size="14" fill="#475569">产物：class / schema　·　主人：工具链</text>
+  <text x="100" y="320" font-family="Noto Sans CJK SC" font-size="14" fill="#94A3B8">坏了的症状：表达不了合法概念</text>
+  <rect x="488" y="246" width="96" height="26" rx="6" fill="#F1F5F9"/>
+  <text x="536" y="264" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="13" fill="#475569">一季改一次</text>
+
+  <!-- 层 3 -->
+  <rect x="40" y="348" width="560" height="96" rx="10" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh)"/>
+  <circle cx="72" cy="384" r="15" fill="#F1F5F9"/>
+  <text x="72" y="390" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="15" font-weight="700" fill="#475569">3</text>
+  <text x="100" y="390" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#0F172A">语义</text>
+  <text x="152" y="390" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">结构意味着什么</text>
+  <text x="100" y="416" font-family="Noto Sans CJK SC" font-size="14" fill="#475569">产物：backend / 解释器　·　主人：领域专家</text>
+  <text x="100" y="436" font-family="Noto Sans CJK SC" font-size="14" fill="#94A3B8">坏了的症状：生成的东西行为不对</text>
+  <rect x="488" y="362" width="96" height="26" rx="6" fill="#F1F5F9"/>
+  <text x="536" y="380" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="13" fill="#475569">一周改一次</text>
+
+  <!-- 好设计 -->
+  <rect x="640" y="176" width="320" height="128" rx="10" fill="#ECFDF5" stroke="#A7F3D0"/>
+  <text x="660" y="204" font-family="Noto Sans CJK SC" font-size="13" fill="#047857">好设计</text>
+  <text x="660" y="230" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#047857">只动第 2 层</text>
+  <text x="660" y="256" font-family="Noto Sans CJK SC" font-size="14" fill="#334155">在 schema 里加一个 Guard 字段</text>
+  <text x="660" y="278" font-family="Noto Sans CJK SC" font-size="14" fill="#64748B">parser 不动，生成器读这个字段</text>
+
+  <!-- 坏设计 -->
+  <rect x="640" y="330" width="320" height="142" rx="10" fill="#FFF1F2" stroke="#FECDD3"/>
+  <text x="660" y="358" font-family="Noto Sans CJK SC" font-size="13" fill="#BE123C">坏设计</text>
+  <text x="660" y="384" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#BE123C">三层一起动</text>
+  <text x="660" y="410" font-family="Noto Sans CJK SC" font-size="14" fill="#334155">发明新句式 legalFor … when …</text>
+  <text x="660" y="432" font-family="Noto Sans CJK SC" font-size="14" fill="#64748B">语法、schema、语义各改一次</text>
+  <text x="660" y="456" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">三处会错，三份测试，三次同步</text>
+
+  <text x="40" y="496" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#0F172A">按这三个频率折算：一年里语义层动 52 次，语法层动 1 次。</text>
+  <text x="40" y="526" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">语义每次变动都要动 parser，就是把最难改的那层，拖进最高频的循环里。</text>
+</svg>
