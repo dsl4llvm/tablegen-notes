@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="700" viewBox="0 0 1000 700">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#94A3B8"/>
+    </marker>
+    <filter id="sh" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="5" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1000" height="700" fill="#F8FAFC"/>
+  <text x="40" y="52" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#0F172A">一份规则，三个后端，一个签名</text>
+  <text x="40" y="82" font-family="Noto Sans CJK SC" font-size="16" fill="#64748B">三份产物长得完全不同，压成同一个签名之后才能逐条比。</text>
+
+  <rect x="40" y="150" width="200" height="164" rx="12" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#sh)"/>
+  <text x="60" y="184" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">唯一的输入</text>
+  <text x="60" y="228" font-family="Noto Sans Mono CJK SC" font-size="14" font-weight="700" fill="#0F172A">X86LegalizerInfo.td</text>
+  <text x="60" y="286" font-family="Noto Sans CJK SC" font-size="20" font-weight="700" fill="#334155">984 行</text>
+
+  <rect x="300" y="118" width="268" height="94" rx="10" fill="#FFFBEB" stroke="#FCD34D"/><text x="318" y="148" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#B45309">-gen-legalizer</text><text x="318" y="178" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#0F172A">C++ 调用链</text><text x="318" y="201" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#64748B">441 行 / 26 KB</text><path d="M240,232 H262 V165 H292" fill="none" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/><path d="M568,165 H592 V292 H612" fill="none" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/><rect x="300" y="234" width="268" height="94" rx="10" fill="#EFF6FF" stroke="#BFDBFE"/><text x="318" y="264" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#1D4ED8">-gen-legalizer-core</text><text x="318" y="294" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#0F172A">JSON IR</text><text x="318" y="317" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#64748B">231 KB</text><path d="M240,232 H262 V281 H292" fill="none" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/><path d="M568,281 H592 V292 H612" fill="none" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/><rect x="300" y="350" width="268" height="94" rx="10" fill="#ECFDF5" stroke="#A7F3D0"/><text x="318" y="380" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#047857">-gen-legalizer-table</text><text x="318" y="410" font-family="Noto Sans CJK SC" font-size="18" font-weight="700" fill="#0F172A">决策表</text><text x="318" y="433" font-family="Noto Sans Mono CJK SC" font-size="14" fill="#64748B">99 KB</text><path d="M240,232 H262 V397 H292" fill="none" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/><path d="M568,397 H592 V292 H612" fill="none" stroke="#94A3B8" stroke-width="2" marker-end="url(#ar)"/>
+
+  <rect x="620" y="152" width="340" height="238" rx="12" fill="#FFFFFF" stroke="#CBD5E1" filter="url(#sh)"/>
+  <text x="642" y="184" font-family="Noto Sans CJK SC" font-size="13" fill="#94A3B8">归一化</text>
+  <text x="642" y="220" font-family="Noto Sans CJK SC" font-size="19" font-weight="700" fill="#0F172A">压成同一个签名</text>
+  <text x="642" y="256" font-family="Noto Sans CJK SC" font-size="15" fill="#334155">opcode + 每个槽位的类型类 + 动作</text>
+  <text x="642" y="284" font-family="Noto Sans CJK SC" font-size="15" fill="#334155">+ 动作的目标类型</text>
+  <line x1="642" y1="302" x2="938" y2="302" stroke="#E2E8F0"/>
+  <text x="642" y="330" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">唯一的差异：指针宽度</text>
+  <text x="642" y="356" font-family="Noto Sans Mono CJK SC" font-size="15" font-weight="700" fill="#BE123C">p0:*  →  p0:64</text>
+  <text x="642" y="378" font-family="Noto Sans CJK SC" font-size="14" fill="#94A3B8">这一层本来就不表达指针宽度</text>
+
+  <rect x="40" y="470" width="280" height="92" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/><text x="180" y="512" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="28" font-weight="700" fill="#0F172A">63 / 63</text><text x="180" y="542" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">ruleset 数</text><rect x="350" y="470" width="280" height="92" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/><text x="490" y="512" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="28" font-weight="700" fill="#0F172A">115 / 115</text><text x="490" y="542" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">opcode 集合</text><rect x="660" y="470" width="280" height="92" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/><text x="800" y="512" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="28" font-weight="700" fill="#0F172A">53 / 53</text><text x="800" y="542" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">legal 签名，归一化后</text>
+
+  <rect x="40" y="606" width="920" height="64" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="500" y="634" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" fill="#334155">65 个 opcode 里 12 个用了别的 builder，压根没进这次比对 —— 18% 未覆盖，写在明面上。</text>
+  <text x="500" y="658" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" fill="#64748B">三份产物对得上，是因为它们读的是同一张记录图；能对上的范围，也只到这张图为止。</text>
+</svg>

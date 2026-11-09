@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="470" viewBox="0 0 1000 470">
+  <rect width="1000" height="470" fill="#F8FAFC"/>
+
+  <text x="40" y="52" font-family="Noto Sans CJK SC" font-size="24" font-weight="700" fill="#0F172A">52 行补丁，逐行摊开</text>
+  <text x="40" y="82" font-family="Noto Sans CJK SC" font-size="16" fill="#64748B">一格 = 一行。真正在写语法的只有最左边那 17 格。</text>
+
+  <rect x="155.0" y="176" width="220" height="64" rx="3" fill="#F59E0B"/><text x="265.0" y="218" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="24" font-weight="700" fill="#FFFFFF">17</text><text x="265.0" y="162" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#B45309">语法</text><rect x="381.0" y="176" width="207" height="64" rx="3" fill="#3B82F6"/><text x="484.5" y="218" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="24" font-weight="700" fill="#FFFFFF">16</text><text x="484.5" y="162" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#1D4ED8">类型规则</text><rect x="594.0" y="176" width="103" height="64" rx="3" fill="#10B981"/><text x="645.5" y="218" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="24" font-weight="700" fill="#FFFFFF">8</text><text x="645.5" y="162" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#047857">辅助函数</text><rect x="703.0" y="176" width="142" height="64" rx="3" fill="#94A3B8"/><text x="774.0" y="218" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="24" font-weight="700" fill="#FFFFFF">11</text><text x="774.0" y="162" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#475569">注释 · 空行</text>
+
+  <path d="M155.0,262 v12 H375.0 v-12" fill="none" stroke="#B45309" stroke-width="2"/>
+  <text x="265.5" y="302" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="15" font-weight="700" fill="#B45309">加一条语法真正花的</text>
+
+  <path d="M381.0,262 v12 H845.0 v-12" fill="none" stroke="#E11D48" stroke-width="2"/>
+  <text x="613.0" y="302" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#BE123C">35 行不是在写语法</text>
+
+  <rect x="40" y="318" width="920" height="108" rx="10" fill="#FFFFFF" stroke="#E2E8F0"/>
+  <text x="500" y="352" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#334155">真语法只有 17 行。剩下的 35 行，是把已有的语义重讲一遍：类型规则 16、辅助函数 8、注释 11。</text>
+  <text x="500" y="382" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="16" fill="#334155">这门语言给 !if 单独写了 36 行类型计算；你加一个表面形式，就得把这套复制一次。</text>
+  <text x="500" y="410" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="17" font-weight="700" fill="#0F172A">语法是可加的，语义只能被复制。</text>
+</svg>
