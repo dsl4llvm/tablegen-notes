@@ -1,0 +1,29 @@
+L1 结构
+  ruleset : C++   63   JSON   63
+  opcode  : C++  115   JSON  115   （其中带 legal 规则：C++ 53 / JSON 65）
+  JSON 规则总数 570，escapes 0，hasFeature 谓词 219
+  config.pointer_width = 64
+
+L2 legal 签名比对（守卫 + 类型元组）
+  可比 opcode 53，完全一致 44，不一致 9
+  排除（使用了本工具未实现的 builder）: 11 个 opcode → ['G_EXTRACT', 'G_FPEXTLOAD', 'G_FPTRUNCSTORE', 'G_ICMP', 'G_INSERT']
+  差异分类：仅 C++ 有 9 个 opcode；仅 JSON 有 9 个；类型相同但守卫文本不同 0 个
+  把 p0:* 归一化成 p0:64 之后：53/53 一致
+    G_CONSTANT
+      C++ : [('', ((0, 'p0:*'),))]
+      JSON: [('', ((0, 'p0:64'),))]
+    G_CONSTANT_FOLD_BARRIER
+      C++ : [('', ((0, 'p0:*'),))]
+      JSON: [('', ((0, 'p0:64'),))]
+    G_CONSTANT_POOL
+      C++ : [('', ((0, 'p0:*'),))]
+      JSON: [('', ((0, 'p0:64'),))]
+    G_FRAME_INDEX
+      C++ : [('', ((0, 'p0:*'),))]
+      JSON: [('', ((0, 'p0:64'),))]
+    G_FREEZE
+      C++ : [('', ((0, 'p0:*'),))]
+      JSON: [('', ((0, 'p0:64'),))]
+    G_IMPLICIT_DEF
+      C++ : [('', ((0, 'p0:*'),))]
+      JSON: [('', ((0, 'p0:64'),))]

@@ -1,0 +1,76 @@
+diff --git a/llvm/lib/TableGen/TGParser.cpp b/llvm/lib/TableGen/TGParser.cpp
+index d360fdf39e0e..71314b21a3e4 100644
+--- a/llvm/lib/TableGen/TGParser.cpp
++++ b/llvm/lib/TableGen/TGParser.cpp
+@@ -3227,12 +3227,24 @@ const Init *TGParser::ParseSimpleValue(Record *CurRec, const RecTy *ItemType,
+   return R;
+ }
+ 
++/// Return the type contributed by one arm of a conditional. BitInit is not a
++/// TypedInit, so it needs its own case -- exactly like the !if logic below.
++static const RecTy *GetConditionalArmType(RecordKeeper &Records,
++                                          const Init *V) {
++  if (isa<BitInit>(V))
++    return BitRecTy::get(Records);
++  if (const auto *T = dyn_cast<TypedInit>(V))
++    return T->getType();
++  return nullptr;
++}
++
+ /// ParseValue - Parse a TableGen value. This returns null on error.
+ ///
+ ///   Value       ::= SimpleValue ValueSuffix*
+ ///   ValueSuffix ::= '{' BitList '}'
+ ///   ValueSuffix ::= '[' SliceElements ']'
+ ///   ValueSuffix ::= '.' ID
++///   ValueSuffix ::= '?' Value ':' Value      // sugar for !if(Cond, A, B)
+ ///
+ const Init *TGParser::ParseValue(Record *CurRec, const RecTy *ItemType,
+                                  IDParseMode Mode) {
+@@ -3246,6 +3258,46 @@ const Init *TGParser::ParseValue(Record *CurRec, const RecTy *ItemType,
+     switch (Lex.getCode()) {
+     default:
+       return Result;
++    case tgtok::question: {
++      // Ternary conditional: Cond '?' Then ':' Else, sugar for !if().
++      // '?' is also the "unset" token, but that one only appears where a
++      // value *starts*; this one appears where a value has just *ended*.
++      SMLoc QLoc = Lex.getLoc();
++      Lex.Lex(); // eat the '?'.
++      const Init *ThenVal = ParseValue(CurRec, nullptr, Mode);
++      if (!ThenVal)
++        return nullptr;
++      if (!consume(tgtok::colon)) {
++        Error(QLoc, "expected ':' in conditional expression");
++        return nullptr;
++      }
++      const Init *ElseVal = ParseValue(CurRec, nullptr, Mode);
++      if (!ElseVal)
++        return nullptr;
++
++      // Build the Init node. Note that we must also reproduce the *type*
++      // rule of !if here: the type of a TernOpInit is not derived from its
++      // opcode, it is computed by whoever creates the node.
++      const RecTy *ThenTy = GetConditionalArmType(Records, ThenVal);
++      const RecTy *ElseTy = GetConditionalArmType(Records, ElseVal);
++      if (isa<UnsetInit>(ThenVal))
++        ThenTy = ElseTy;
++      if (isa<UnsetInit>(ElseVal))
++        ElseTy = ThenTy;
++      if (!ThenTy || !ElseTy) {
++        Error(QLoc, "could not determine type of conditional expression");
++        return nullptr;
++      }
++      const RecTy *Ty = resolveTypes(ThenTy, ElseTy);
++      if (!Ty) {
++        Error(QLoc, Twine("inconsistent types '") + ThenTy->getAsString() +
++                        "' and '" + ElseTy->getAsString() + "'");
++        return nullptr;
++      }
++      Result = TernOpInit::get(TernOpInit::IF, Result, ThenVal, ElseVal, Ty)
++                   ->Fold(CurRec);
++      break;
++    }
+     case tgtok::l_brace: {
+       if (Mode == ParseNameMode)
+         // This is the beginning of the object body.

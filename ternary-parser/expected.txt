@@ -1,0 +1,36 @@
+------------- Classes -----------------
+class P<bits<8> P:v = { ?, ?, ?, ?, ?, ?, ?, ? }> {
+  int big = !if(!gt(P:v, 100), 1, 0);
+}
+------------- Defs -----------------
+def A {
+  int x = 10;
+}
+def B {
+  int y = 20;
+}
+def Bits {
+  bits<8> b = { 1, 1, 1, 1, 1, 1, 1, 1 };
+}
+def C {
+  bit flag = 1;
+  int z = 1;
+}
+def D {	// P
+  int big = 1;
+}
+def E {	// P
+  int big = 0;
+}
+def InList {
+  list<int> l = [2, 4];
+}
+def Nested {
+  int n = 2;
+}
+def Str {
+  string s = "yes";
+}
+def Unset {
+  int u = ?;
+}
