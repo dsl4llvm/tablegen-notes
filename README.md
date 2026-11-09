@@ -13,7 +13,7 @@
 | `little-language/` | 87 行 `.td` 定义一门表达式语言；一份定义喂给两个后端，加一个运算符只改 2 行 | `python3`；重新生成需要 `llvm-tblgen` | ✅ 16 条测试全过 |
 | `recordkind/` | 「元模型层」物理上只是两张 map + 一个 enum；`class` / `def` 同名共存，`:` 右边只查 class 表 | `llvm-tblgen` | ✅ 三组最小实验 |
 | `escape-hatch/` | 量 td 里 `code` 和 `dag` 的密度（每千行），同一把尺子 | `python3` + 一份 llvm-project 源码 | ✅ 可对任意 llvm-project 跑 |
-| `ternary-parser/` | 给 TableGen 加一条三元语法：52 行，其中 17 行是语法 | 需要打补丁后重新编译 `llvm-tblgen` | ⚠️ 需要自己构建 |
+| `ternary-parser/` | 给 TableGen 加一条三元语法：52 行，其中 17 行是语法 | 需要编 `llvm-tblgen`（约 2 分钟）；补丁已在 `tablegen/ternary-sugar` 分支上 | ✅ 已复现，diff 为空 |
 | `legalizer-compare/` | 同一份 `.td`，两个后端归一化后逐条比对（63/63、53/53） | 需要带 `-gen-legalizer-core` 的 `llvm-tblgen` | ⚠️ 该后端尚未上游 |
 
 最后两个不是"跑不起来"，是**跑起来要付前置成本**：一个要编 LLVM（约 25 分钟），一个需要本文作者的分支。代码和预期输出都在，代价写在这里，不藏。

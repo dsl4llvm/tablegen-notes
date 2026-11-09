@@ -1,16 +1,39 @@
 # 给 TableGen 加一条三元语法
 
-`ternary.patch`：52 行新增、0 行删除、单文件 `llvm/lib/TableGen/TGParser.cpp`。
+`ternary.patch`：52 行新增、0 行删除，单文件 `llvm/lib/TableGen/TGParser.cpp`。
 
-## 复现
+补丁已经打在公开分支上，可以直接 clone 下来编：
+
+```bash
+git clone --depth 1 -b tablegen/ternary-sugar \
+  https://github.com/dsl4llvm/llvm-project.git
+cd llvm-project
+cmake -G Ninja -S llvm -B build -DCMAKE_BUILD_TYPE=Release \
+  -DLLVM_TARGETS_TO_BUILD=X86 -DLLVM_ENABLE_PROJECTS= \
+  -DLLVM_INCLUDE_TESTS=OFF
+ninja -C build llvm-tblgen
+./build/bin/llvm-tblgen test.td -print-records | diff - expected.txt
+```
+
+320 个目标，`-j24` 约 2 分钟。**实测：diff 无输出，和 `expected.txt` 逐字节相同。**
+
+不想 clone 整个仓库，也可以自己打：
 
 ```bash
 cd /path/to/llvm-project
-git checkout dac078582b28
-git apply /path/to/ternary.patch
+git apply /path/to/ternary.patch    # 对当前 main 也能干净应用
 ninja llvm-tblgen
-./bin/llvm-tblgen test.td -print-records | diff - expected.txt
 ```
+
+## 改了什么
+
+```
+ValueSuffix ::= '?' Value ':' Value     // sugar for !if(Cond, A, B)
+```
+
+`?` 本来就有——但那是 unset 字面量，只出现在一个值**开始**的位置。这里加的是它出现在一个值**结束之后**的第二种用法。两种含义靠语法位置区分，不靠词法。
+
+解析出来没有新节点：常量在解析期就折叠，条件暂时算不出来的保留成 `!if(...)`，等实例化时再求值。
 
 ## 覆盖的东西
 
