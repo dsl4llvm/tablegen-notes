@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660">
+  <defs>
+    <filter id="sh2" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="660" fill="#F8FAFC"/>
+
+  <text x="56" y="62" font-family="Noto Sans CJK SC" font-size="28" font-weight="700" fill="#0F172A">2 ^ 3 ^ 2：一行代码，两棵树</text>
+  <text x="56" y="96" font-family="Noto Sans CJK SC" font-size="16" fill="#64748B">结合性写在 td 里；引擎里，它只改了一个 +1</text>
+
+  <!-- 左：right -->
+  <rect x="56" y="132" width="520" height="440" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh2)"/>
+  <text x="84" y="174" font-family="Noto Sans Mono CJK SC" font-size="16" font-weight="700" fill="#1D4ED8">assoc = right</text>
+  <text x="84" y="200" font-family="Noto Sans CJK SC" font-size="13" fill="#64748B">expr.td 里写的就是这一行</text>
+
+  <g stroke="#94A3B8" stroke-width="2">
+    <line x1="316" y1="286" x2="232" y2="338"/>
+    <line x1="316" y1="286" x2="400" y2="338"/>
+    <line x1="400" y1="374" x2="352" y2="426"/>
+    <line x1="400" y1="374" x2="452" y2="426"/>
+  </g>
+  <g font-family="Noto Sans Mono CJK SC" font-size="17" font-weight="700" text-anchor="middle">
+    <rect x="284" y="250" width="64" height="36" rx="9" fill="#EFF6FF" stroke="#93C5FD"/>
+    <text x="316" y="274" fill="#1E3A8A">pow</text>
+    <rect x="200" y="338" width="64" height="36" rx="9" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="232" y="362" fill="#334155">2</text>
+    <rect x="368" y="338" width="64" height="36" rx="9" fill="#EFF6FF" stroke="#93C5FD"/>
+    <text x="400" y="362" fill="#1E3A8A">pow</text>
+    <rect x="320" y="426" width="64" height="36" rx="9" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="352" y="450" fill="#334155">3</text>
+    <rect x="420" y="426" width="64" height="36" rx="9" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="452" y="450" fill="#334155">2</text>
+  </g>
+
+  <text x="316" y="524" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="40" font-weight="700" fill="#1D4ED8">= 512</text>
+  <text x="316" y="552" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="15" fill="#64748B">2 ^ (3 ^ 2)</text>
+
+  <!-- 右：left -->
+  <rect x="624" y="132" width="520" height="440" rx="14" fill="#FFFFFF" stroke="#E2E8F0" filter="url(#sh2)"/>
+  <text x="652" y="174" font-family="Noto Sans Mono CJK SC" font-size="16" font-weight="700" fill="#B45309">assoc = left</text>
+  <text x="652" y="200" font-family="Noto Sans CJK SC" font-size="13" fill="#64748B">把 td 那个字改成 left，就这样</text>
+
+  <g stroke="#94A3B8" stroke-width="2">
+    <line x1="884" y1="286" x2="800" y2="338"/>
+    <line x1="884" y1="286" x2="968" y2="338"/>
+    <line x1="800" y1="374" x2="752" y2="426"/>
+    <line x1="800" y1="374" x2="848" y2="426"/>
+  </g>
+  <g font-family="Noto Sans Mono CJK SC" font-size="17" font-weight="700" text-anchor="middle">
+    <rect x="852" y="250" width="64" height="36" rx="9" fill="#FFFBEB" stroke="#FCD34D"/>
+    <text x="884" y="274" fill="#92400E">pow</text>
+    <rect x="768" y="338" width="64" height="36" rx="9" fill="#FFFBEB" stroke="#FCD34D"/>
+    <text x="800" y="362" fill="#92400E">pow</text>
+    <rect x="936" y="338" width="64" height="36" rx="9" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="968" y="362" fill="#334155">2</text>
+    <rect x="720" y="426" width="64" height="36" rx="9" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="752" y="450" fill="#334155">2</text>
+    <rect x="816" y="426" width="64" height="36" rx="9" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="848" y="450" fill="#334155">3</text>
+  </g>
+
+  <text x="884" y="524" text-anchor="middle" font-family="Noto Sans CJK SC" font-size="40" font-weight="700" fill="#B45309">= 64</text>
+  <text x="884" y="552" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="15" fill="#64748B">((2 ^ 3) ^ 2)</text>
+
+  <text x="600" y="628" text-anchor="middle" font-family="Noto Sans Mono CJK SC" font-size="16" fill="#475569">nxt = prec + 1 if assoc == "left" else prec</text>
+</svg>
