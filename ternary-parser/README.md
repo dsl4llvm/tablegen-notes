@@ -17,6 +17,8 @@ ninja -C build llvm-tblgen
 
 320 个目标，`-j24` 约 2 分钟。**实测：diff 无输出，和 `expected.txt` 逐字节相同。**
 
+分支停在提交 `ab523b0`，不会再变。要钉死引用就 checkout 这个 SHA。
+
 不想 clone 整个仓库，也可以自己打：
 
 ```bash
