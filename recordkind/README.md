@@ -8,6 +8,7 @@
 llvm-tblgen probe.td  -print-records   # 同名 class / def 共存，不报错
 llvm-tblgen probe1.td -print-records   # error: Couldn't find class 'D'
 llvm-tblgen probe2.td -print-records   # error: Couldn't find class 'D'
+llvm-tblgen probe3.td -print-records   # error: Couldn't find class 'M'. Use 'defm' ...
 ```
 
 ## 三个文件
@@ -17,8 +18,11 @@ llvm-tblgen probe2.td -print-records   # error: Couldn't find class 'D'
 | `probe.td` | 同名 `class TB` 与 `def TB` | 正常打印，两条记录互不干扰 |
 | `probe1.td` | `class C : D;`，`D` 是 def | `Couldn't find class 'D'` |
 | `probe2.td` | `def E : D;`，`D` 是 def | `Couldn't find class 'D'` |
+| `probe3.td` | `def D : M;`，`M` 是 multiclass | `Couldn't find class 'M'`，并提示改用 `defm` |
 
-后两个的报错文案完全一样——因为 `:` 右边只查 class 表，查不到就报「找不到 class」，不管那个名字在 def 表里存不存在。
+前两个的报错文案完全一样——因为 `:` 右边只查 class 表，查不到就报「找不到 class」，不管那个名字在 def 表里存不存在。
+
+第三个多出半句提示：parser 知道 `M` 是 multiclass（它自己在另一张表里记着），所以能告诉你「要用 defm」。知道，但不在同一条查找路径上。
 
 ## 结论
 
