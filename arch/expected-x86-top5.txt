@@ -1,0 +1,5 @@
+InstructionEncoding 22770
+Instruction 22770
+X86Inst 22426
+I 21196
+Sched 20673

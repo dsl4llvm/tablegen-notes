@@ -53,9 +53,10 @@ else
 fi
 
 echo
-echo "== ternary-parser / legalizer-compare =="
+echo "== ternary-parser / legalizer-compare / arch =="
 skip "ternary-parser 需要打补丁后重编 llvm-tblgen（见该目录 README）"
 skip "legalizer-compare 需要带 -gen-legalizer-core 的 llvm-tblgen（尚未上游）"
+skip "arch 需要把后端拷进 LLVM 源码并重编（见 arch/README.md）"
 
 echo
 if [ "$fail" -ne 0 ]; then
